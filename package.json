@@ -1,0 +1,28 @@
+{
+  "name": "telegram-gift-nft-shop",
+  "version": "1.0.0",
+  "description": "Telegram Gift & NFT Shop - Complete marketplace",
+  "main": "backend/src/index.js",
+  "scripts": {
+    "start": "bash start.sh",
+    "setup": "bash setup.sh",
+    "backend": "cd backend && npm run dev",
+    "bot": "cd telegram_bot && npm start",
+    "frontend": "cd frontend && python -m http.server 3001",
+    "admin": "cd admin && python -m http.server 3002"
+  },
+  "keywords": [
+    "telegram",
+    "shop",
+    "nft",
+    "stars",
+    "bot",
+    "marketplace"
+  ],
+  "author": "vdvdbbball",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vdvdbbball/gift-nft-page.git"
+  }
+}
