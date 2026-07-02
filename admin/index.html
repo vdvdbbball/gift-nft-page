@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Telegram Gift & NFT Shop</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>🛡️ Admin</h2>
+        <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active" data-section="dashboard">
+          <span class="icon">📊</span>
+          <span class="text">Панель</span>
+        </a>
+        <a href="#products" class="nav-item" data-section="products">
+          <span class="icon">📦</span>
+          <span class="text">Товари</span>
+        </a>
+        <a href="#categories" class="nav-item" data-section="categories">
+          <span class="icon">📂</span>
+          <span class="text">Категорії</span>
+        </a>
+        <a href="#orders" class="nav-item" data-section="orders">
+          <span class="icon">📋</span>
+          <span class="text">Замовлення</span>
+        </a>
+        <a href="#users" class="nav-item" data-section="users">
+          <span class="icon">👥</span>
+          <span class="text">Користувачі</span>
+        </a>
+        <a href="#settings" class="nav-item" data-section="settings">
+          <span class="icon">⚙️</span>
+          <span class="text">Налаштування</span>
+        </a>
+        <button id="logoutBtn" class="nav-item logout">
+          <span class="icon">🚪</span>
+          <span class="text">Вихід</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="admin-header">
+        <h1 id="sectionTitle">Панель керування</h1>
+        <div class="admin-info">
+          <span id="adminName">Admin</span>
+          <div class="admin-avatar">👤</div>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- Login Section -->
+        <section id="login" class="section active">
+          <div class="login-container">
+            <div class="login-card">
+              <h2>Вхід в адмін-панель</h2>
+              <form id="loginForm">
+                <div class="form-group">
+                  <label>Логін</label>
+                  <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                  <label>Пароль</label>
+                  <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Увійти</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">📊</div>
+              <div class="stat-content">
+                <div class="stat-value" id="totalOrders">0</div>
+                <div class="stat-label">Замовлень</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">💰</div>
+              <div class="stat-content">
+                <div class="stat-value" id="totalRevenue">₴0</div>
+                <div class="stat-label">Дохід</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">👥</div>
+              <div class="stat-content">
+                <div class="stat-value" id="totalUsers">0</div>
+                <div class="stat-label">Користувачів</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📦</div>
+              <div class="stat-content">
+                <div class="stat-value" id="totalProducts">0</div>
+                <div class="stat-label">Товарів</div>
+              </div>
+            </div>
+          </div>
+          <div class="recent-orders">
+            <h3>Останні замовлення</h3>
+            <div id="recentOrdersList"></div>
+          </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="section">
+          <div class="section-header">
+            <h3>Керування товарами</h3>
+            <button class="btn btn-primary" id="addProductBtn">+ Додати товар</button>
+          </div>
+          <div id="productsList"></div>
+        </section>
+
+        <!-- Product Form Modal -->
+        <div id="productModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Редагування товару</h3>
+            <form id="productForm">
+              <input type="hidden" id="productId">
+              <div class="form-group">
+                <label>Назва</label>
+                <input type="text" id="productName" required>
+              </div>
+              <div class="form-group">
+                <label>Опис</label>
+                <textarea id="productDescription" required></textarea>
+              </div>
+              <div class="form-group">
+                <label>Категорія</label>
+                <select id="productCategory" required></select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Ціна (грн)</label>
+                  <input type="number" id="productPriceUah" step="0.01" required>
+                </div>
+                <div class="form-group">
+                  <label>Ціна (TON)</label>
+                  <input type="number" id="productPriceTon" step="0.01" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" id="productActive" checked>
+                  Активний
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary">Зберегти</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Categories Section -->
+        <section id="categories" class="section">
+          <div class="section-header">
+            <h3>Керування категоріями</h3>
+            <button class="btn btn-primary" id="addCategoryBtn">+ Додати категорію</button>
+          </div>
+          <div id="categoriesList"></div>
+        </section>
+
+        <!-- Category Form Modal -->
+        <div id="categoryModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Редагування категорії</h3>
+            <form id="categoryForm">
+              <input type="hidden" id="categoryId">
+              <div class="form-group">
+                <label>Назва</label>
+                <input type="text" id="categoryName" required>
+              </div>
+              <div class="form-group">
+                <label>Опис</label>
+                <textarea id="categoryDescription"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Іконка</label>
+                <input type="text" id="categoryIcon" placeholder="Наприклад: 🎁">
+              </div>
+              <button type="submit" class="btn btn-primary">Зберегти</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Orders Section -->
+        <section id="orders" class="section">
+          <div class="section-header">
+            <h3>Замовлення</h3>
+          </div>
+          <div id="ordersList"></div>
+        </section>
+
+        <!-- Users Section -->
+        <section id="users" class="section">
+          <div class="section-header">
+            <h3>Користувачі</h3>
+          </div>
+          <div id="usersList"></div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="section">
+          <div class="section-header">
+            <h3>Налаштування</h3>
+          </div>
+          <div id="settingsList"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+  <!-- Loading -->
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

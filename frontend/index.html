@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Gift & NFT Shop - Магазин Подарунків</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <span class="logo-icon">🎁</span>
+          <h1>Gift & NFT Shop</h1>
+        </div>
+        <nav class="nav">
+          <ul>
+            <li><a href="#home" class="nav-link active">Головна</a></li>
+            <li><a href="#catalog" class="nav-link">Каталог</a></li>
+            <li><a href="#prices" class="nav-link">Ціни</a></li>
+            <li><a href="#about" class="nav-link">Про нас</a></li>
+            <li><a href="#support" class="nav-link">Підтримка</a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" class="mobile-link">Головна</a>
+      <a href="#catalog" class="mobile-link">Каталог</a>
+      <a href="#prices" class="mobile-link">Ціни</a>
+      <a href="#about" class="mobile-link">Про нас</a>
+      <a href="#support" class="mobile-link">Підтримка</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h2>🌟 Telegram Gift & NFT Shop</h2>
+        <p>Купуйте Telegram Stars, NFT подарунки та цифрові товари</p>
+        <a href="#catalog" class="btn btn-primary">Переглянути каталог</a>
+      </div>
+      <div class="hero-image">
+        <div class="floating-card">⭐</div>
+        <div class="floating-card">🎁</div>
+        <div class="floating-card">🚀</div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
+      <h3>📂 Категорії</h3>
+      <div class="categories-grid" id="categoriesList"></div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="catalog" class="products">
+      <h3>🛍️ Каталог Товарів</h3>
+      <div class="filters">
+        <select id="categoryFilter" class="filter-select">
+          <option value="">Всі категорії</option>
+        </select>
+      </div>
+      <div class="products-grid" id="productsList"></div>
+    </section>
+
+    <!-- Prices Section -->
+    <section id="prices" class="prices">
+      <h3>💰 Поточні Ціни</h3>
+      <div class="prices-table" id="pricesTable"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <h3>ℹ️ Про Магазин</h3>
+      <div class="about-content">
+        <div class="about-card">
+          <div class="card-icon">⭐</div>
+          <h4>Telegram Stars</h4>
+          <p>Купуйте Telegram Stars для платежів та донатів у ваших улюблених каналах</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">🎁</div>
+          <h4>Цифрові Подарунки</h4>
+          <p>Унікальні NFT колекції та цифрові подарунки для вашого профілю</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">💎</div>
+          <h4>Premium Послуги</h4>
+          <p>Преміум підписка з усіма привілеями та екслюзивним контентом</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">🔒</div>
+          <h4>Безпечні Платежі</h4>
+          <p>Захищені платежі через TON Wallet та Telegram Stars</p>
+        </div>
+      </div>
+      <div class="payment-methods">
+        <h4>Підтримуємі способи оплати:</h4>
+        <ul>
+          <li>💰 TON Wallet</li>
+          <li>⭐ Telegram Stars</li>
+          <li>✋ Ручне підтвердження</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support" class="support">
+      <h3>🆘 Служба Підтримки</h3>
+      <div class="support-content">
+        <div class="support-info">
+          <h4>Потрібна допомога?</h4>
+          <p>Ми тут 24/7 для вас!</p>
+          <div class="contact-info">
+            <p>📧 <strong>Email:</strong> support@shop.local</p>
+            <p>💬 <strong>Telegram:</strong> @support_bot</p>
+            <p>⏰ <strong>Час роботи:</strong> 24/7</p>
+          </div>
+          <p class="support-text">Якщо у вас є питання або проблеми з замовленням, будь ласка зв'яжіться з нами. Ми спробуємо допомогти якомога швидше!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2024 Telegram Gift & NFT Shop. Усі права захищені.</p>
+      <p>Розроблено з ❤️ для вас</p>
+    </footer>
+  </div>
+
+  <!-- Loading -->
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
