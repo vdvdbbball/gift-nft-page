@@ -1,0 +1,16 @@
+node_modules/
+.env
+.env.local
+.DS_Store
+*.log
+*.pyc
+__pycache__/
+dist/
+build/
+.vscode/
+.idea/
+uploads/
+.sqlite
+*.db
+venv/
+env/
